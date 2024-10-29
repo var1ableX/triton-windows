@@ -904,7 +904,7 @@ bool matchMFMAAndDotOperandShuffleCase(RankedTensorType srcTy,
 // distributed shared memory. If it's also the identity on kWarp, we can
 // transfer via warp-shuffles, and if it's the identity on kLane just have to
 // reorder the registers
-LinearLayout minimalCvtLayout(RankedTensorType srcTy, RankedTensorType dstTy) {
+triton::LinearLayout minimalCvtLayout(RankedTensorType srcTy, RankedTensorType dstTy) {
   MLIRContext *ctx = srcTy.getContext();
   triton::LinearLayout srcLayout =
       triton::gpu::toLinearLayout(srcTy.getShape(), srcTy.getEncoding());
